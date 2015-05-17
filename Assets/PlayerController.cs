@@ -15,6 +15,22 @@ public class PlayerController : MonoBehaviour {
 	GameObject[] rightSpikes = new GameObject[16];
 	int spikeNumber;
 
+	public Sprite one;
+	public Sprite two;
+	public Sprite three;
+	public Sprite four;
+	public Sprite five;
+	public Sprite six;
+	public Sprite seven;
+	public Sprite eight;
+	public Sprite nine;
+	public Sprite zero;
+
+	public SpriteRenderer leftNumberRend;
+	public SpriteRenderer rightNumberRend;
+
+	public GameObject LeftNumber; //= Resources.Load("fruits_1", typeof(Sprite)) as Sprite;
+	public GameObject RightNumber; 
 
 	bool isAlive = true;
 	//bool gameIsStarted = false;
@@ -32,7 +48,13 @@ public class PlayerController : MonoBehaviour {
 		{
 			rightSpikePosition[i] = new Vector3(4f, 4f - i*0.6f ,0);
 		}
-		
+
+
+
+
+
+
+
 		//Rigidbody2D clone;
 		//clone = Instantiate (leftSpike, new Vector3 (0, 0, 0), Quaternion.identity)as Rigidbody2D;
 	}
@@ -50,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 			Respawn();
 		} 
 
-	
+		UpdateScoreboard ();
 	}
 
 
@@ -226,7 +248,8 @@ public class PlayerController : MonoBehaviour {
 	void Death()
 	{
 		transform.rotation = Quaternion.Euler(0,0,120);
-		isAlive = false; 
+		isAlive = false;
+
 	}
 
 	void Respawn()
@@ -243,6 +266,10 @@ public class PlayerController : MonoBehaviour {
 		DespawnSpikes (leftSpikes);DespawnSpikes (rightSpikes);
 		transform.position = new Vector2 (0,1.00f);
 		isAlive = true;
+
+		leftNumberRend.sprite = zero;
+		rightNumberRend.sprite = zero;
+
 	}
 	void OnGUI () 
 	{
@@ -256,14 +283,64 @@ public class PlayerController : MonoBehaviour {
 
 		GUILayout.EndArea ();
 		
-
-
-
-
-
-		                    //GUI.Label (new Rect (450,450,100,50), "This is the text string for a Label Control");
+              //GUI.Label (new Rect (450,450,100,50), "This is the text string for a Label Control");
 
 	}
+
+
+	void UpdateScoreboard()
+	{
+
+		if (score < 10) 
+		{
+			if(score == 1){rightNumberRend.sprite = one; }
+			if(score == 2){rightNumberRend.sprite = two; }
+			if(score == 3){rightNumberRend.sprite = three; }
+			if(score == 4){rightNumberRend.sprite = four; }
+			if(score == 5){rightNumberRend.sprite = five; }
+			if(score == 6){rightNumberRend.sprite = six; }
+			if(score == 7){rightNumberRend.sprite = seven; }
+			if(score == 8){rightNumberRend.sprite = eight; }
+			if(score == 9){rightNumberRend.sprite = nine; }
+		}
+		else 
+		{
+			int leftNumb = score / 10;
+			int rightNumbt = score % 10;
+			if(leftNumb == 1){leftNumberRend.sprite = one; }
+			if(leftNumb == 2){leftNumberRend.sprite = two; }
+			if(leftNumb == 3){leftNumberRend.sprite = three; }
+			if(leftNumb == 4){leftNumberRend.sprite = four; }
+			if(leftNumb == 5){leftNumberRend.sprite = five; }
+			if(leftNumb == 6){leftNumberRend.sprite = six; }
+			if(leftNumb == 7){leftNumberRend.sprite = seven; }
+			if(leftNumb == 8){leftNumberRend.sprite = eight; }
+			if(leftNumb == 9){leftNumberRend.sprite = nine; }
+		
+			if(rightNumbt == 0){rightNumberRend.sprite = zero; }
+			if(rightNumbt == 1){rightNumberRend.sprite = one; }
+			if(rightNumbt == 2){rightNumberRend.sprite = two; }
+			if(rightNumbt == 3){rightNumberRend.sprite = three; }
+			if(rightNumbt == 4){rightNumberRend.sprite = four; }
+			if(rightNumbt == 5){rightNumberRend.sprite = five; }
+			if(rightNumbt == 6){rightNumberRend.sprite = six; }
+			if(rightNumbt == 7){rightNumberRend.sprite = seven; }
+			if(rightNumbt == 8){rightNumberRend.sprite = eight; }
+			if(rightNumbt == 9){rightNumberRend.sprite = nine; }
+		
+		
+		
+		
+		
+		
+		
+		
+		}
+
+
+	}
+
+
 
 
 
